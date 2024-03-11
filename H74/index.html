@@ -16,6 +16,12 @@
     <!-- You can specify one of this: blue.css, green.css, white.css -->
     <link rel="stylesheet" id="styleselector_css" href="">
     <script src="assets/js/modernizr-2.6.0.min.js"></script>
+    <style>
+        .result1 {
+            display: none; /* 默认状态下隐藏 */
+            /*visibility: hidden;*/ /* 初始状态下隐藏 */
+        }
+    </style>
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="140">
 <!-- BEGIN Parallax -->
@@ -84,8 +90,6 @@
                 <div class="content clearfix">
                     <h1>Upload your Json</h1>
                     <input type="file" id="json-input" style="display: none;">
-                    <!---let---->
-                    <button id="upload-json-btn" class="button1">Upload JSON</button>   
                     <a class="arrow transition02"></a>
                 </div>
             </div>
@@ -144,7 +148,8 @@
         </div>
         <div class="box-content">
             <div class="row comment">
-                <div class="span12">
+                <div class="span12 result1">
+                    <!--fix1-->
                     <div class="content clearfix">
                         <img src="assets/img/women1.png" alt="">
                         <h2>This is totally amazing!</h2>
@@ -154,7 +159,8 @@
                 </div>
             </div>
             <div class="row comment">
-                <div class="span12">
+                <div class="span12 result1">
+                    <!--fix2-->
                     <div class="content clearfix">
                         <img src="assets/img/women2.png" alt="">
                         <h2>Tecato? pretty sure in next time</h2>
@@ -193,10 +199,27 @@
                     const jsonData = JSON.parse(event.target.result);
                     console.log(jsonData);
                     alert('上传成功！');
+                    modifyPageAfterUpload(jsonData);
                 };
                 reader.readAsText(file);
             }
         });
+
+    // 自定义函数，用于在上传成功后修改页面
+    function modifyPageAfterUpload(data) {
+        
+        var resultElement = document.querySelectorAll('.result1');
+    
+        // 检查元素是否存在
+        resultElement.forEach(function(element) {
+            element.style.display = 'block';
+        });
+        // if (resultElement) {
+            
+        //     resultElement.style.display = 'block'; // 显示元素
+        // }
+        
+    }
     //};
 </script>
 </body>

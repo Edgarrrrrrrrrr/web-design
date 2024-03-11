@@ -84,7 +84,8 @@
                 <div class="content clearfix">
                     <h1>Upload your Json</h1>
                     <input type="file" id="json-input" style="display: none;">
-                    <button id="upload-json-btn">Upload JSON</button>
+                    <!---let---->
+                    <button id="upload-json-btn" class="button1">Upload JSON</button>   
                     <a class="arrow transition02"></a>
                 </div>
             </div>
@@ -105,10 +106,10 @@
                 <div class="span4">
                     <div class="circle-container">
                         <div class="circle circle-active transition1">
-                            <img class="transition1" src="assets/img/icons/socialized.png" alt="">
-                            <div class="circle-text transition1">
+                            <img id="upload-json-btn1" class="clickable-area transition1" src="assets/img/icons/socialized.png" alt="" onclick="uploadnew()">
+                            <div id="upload-json-btn2" class="circle-text transition1 clickable-area" onclick="uploadnew()">
                                 <h3>Upload your json</h3>
-                                <p>Upload the local JSON file, and we'll process the data.Additionally, we will provide you with a report upon completion of the processing.</p>
+                                
                             </div>
                         </div>
                     </div>
@@ -175,23 +176,28 @@
 <script src="assets/js/script.js"></script>
 
 <script>
-    // JavaScript 代码
-    document.getElementById('upload-json-btn').addEventListener('click', function() {
-        document.getElementById('json-input').click();
-    });
-
-    document.getElementById('json-input').addEventListener('change', function() {
-        const file = this.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                const jsonData = JSON.parse(event.target.result);
-                console.log(jsonData); // 在控制台中输出 JSON 数据，你可以根据需要进行后续处理
-                alert('上传成功！');
-            };
-            reader.readAsText(file);
-        }
-    });
+    document.getElementById('upload-json-btn1').addEventListener('click', function() {
+            document.getElementById('json-input').click();
+        });
+        document.getElementById('upload-json-btn2').addEventListener('click', function() {
+            document.getElementById('json-input').click();
+        });
+    //function uploadnew() {
+        // JavaScript 代码
+        
+        document.getElementById('json-input').addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const jsonData = JSON.parse(event.target.result);
+                    console.log(jsonData);
+                    alert('上传成功！');
+                };
+                reader.readAsText(file);
+            }
+        });
+    //};
 </script>
 </body>
 </html>

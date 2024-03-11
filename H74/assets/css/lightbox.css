@@ -8,7 +8,9 @@
   opacity: 0.85;
   display: none;
 }
-
+.clickable-area {
+  cursor: pointer;
+}
 /* line 15, ../sass/lightbox.sass */
 #lightbox {
   position: absolute;
